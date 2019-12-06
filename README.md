@@ -40,25 +40,20 @@ Os gráficos são interativos, sendo possível interagir com os mesmos. Ao clica
 Clicando com o botão esquerdo do mouse também é possível selecionar os gráficos individualmente, caso o usuário deseje destacá-lo em certas simulações:
 ![9-seleção]()
 
-
-
 # Opções de menu
 
 Acessando a barra superior do programa é possivel acessar algumas opções a cerca do mesmo. Entre elas, temos a opção abrir, que abre um arquivo do formato ".csv" do computador do usuário, referente a uma simulção salva, para exibir informações de uma simulação especifica que se deseja.
 ![10-abrir]()
 
-A opção salvar cri uma arquivo ".csv" para salvar os valores dos vetores
+A opção salvar cria uma arquivo ".csv" para salvar os valores de cada ccomponente do circuito:
 ![11-salvar]()
+
+A opção sair, ao ser presionad, fecha a janela do programa, encerrando o mesmo:
 ![12-sair]()
+
+A opção consultar manual, na aba Ajuda ao lado do Menu, abre o navegador e o direciona para o link deste manual, esta opção pode sr utilizda caso o usuário tenha alguma dúvida de como utilizar o programa:
 ![13-ajuda]()
-
-
-
-# Teoria
-
 
 # Arquivos externos
 
 Para plotar de maneira mais fácil os gráficos aqui apresentados foi utilizado um pacote que não pertence a biblioteca padrão do Qt Creator. Este pacote é chamado QCustomPlot, que está disponível em "https://www.qcustomplot.com/" com uma versão gratuita. Com o mesmo, é possível criar uma gama gigantesca de gráficos dos mais vaiados tipos. Dessa maneira, neste projeto foi utilizado uma pequena parcela do verdadeiro potencial deste pacote.
-
-
