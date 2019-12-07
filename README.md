@@ -86,7 +86,7 @@ A opção consultar manual, na aba Ajuda ao lado do Menu, abre o navegador e o d
 Este projeto foi realizado atraves do estudo de circuitos elétricos. A priori, para montar o modelo matemático do circuito com derivadas e integrais foi necessário utilizar a lei de kirchhoff para as tensões e correntes e, com manipulações algébricas, para colocar certos termos em evidência a fim de obter resultados com os parâmetros fornecidos pelo usuário do programa.
 Entre esses resultados, temos valores de tensão e corrente na forma de vetores, com seus respectivos ângulos de fase. Valores estes que foram alcançados por meio de uma matriz com números complexos.
 
-![17-calculo]()
+![17-calculo](https://github.com/Guilherme167/Projeto/blob/master/imagens/17-calculo.png)
 
 # Arquivos externos
 
