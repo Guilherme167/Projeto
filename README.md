@@ -1,6 +1,6 @@
 # Manual do Programa
 
-Projeto desenvolvido atraves do programa Qt Creator pelo aluno Guilherme Costa, curso Engenharia Elétrica-IFPB. O programa ao qual este manual se refere é, um aplicativo de simulação de um circuito RLC, sendo um tipo bem comum de carga elétrica, para assim analizar o comportamento do mesmo em certas condições.
+Projeto desenvolvido atraves do programa Qt Creator pelo aluno Guilherme Costa, curso Engenharia Elétrica-IFPB. O programa ao qual este manual se refere é, um aplicativo de simulação de um circuito RLC alimentado por um fonte de tensão senoidal, sendo um tipo bem comum de carga elétrica, para assim analizar o comportamento do mesmo em certas condições.
 
 # Objetivo da aplicação
 
@@ -13,7 +13,7 @@ O programa possui uma interface simples que facilita a sua utilização, aqui te
 
 ![1-interface](https://github.com/Guilherme167/Projeto/blob/master/imagens/1-interface.png)
 
-Nas caixas de texto é possível inserir os valores de cada componente do circuito que se deseja simular, devem ser inseridos apenas números positivos separados por ponto (no lugar de vírgulas) se necessário:
+Nas caixas de texto é possível inserir os valores de cada componente do circuito que se deseja simular, como o valor eficaz da tensão senoidal da fonte por exemplo. Tais valores devem ser inseridos apenas na forma de números positivos separados por ponto (no lugar de vírgulas) se necessário:
 
 ![2-valores](https://github.com/Guilherme167/Projeto/blob/master/imagens/2-valores.png)
 
@@ -80,6 +80,13 @@ A opção sair, ao ser presionad, fecha a janela do programa, encerrando o mesmo
 A opção consultar manual, na aba Ajuda ao lado do Menu, abre o navegador e o direciona para o link deste manual, esta opção pode ser utilizada caso o usuário tenha alguma dúvida de como utilizar o programa:
 
 ![13-ajuda](https://github.com/Guilherme167/Projeto/blob/master/imagens/13-ajuda.png)
+
+# Uma breve teoria
+
+Este projeto foi realizado atraves do estudo de circuitos elétricos. A priori, para montar o modelo matemático do circuito com derivadas e integrais foi necessário utilizar a lei de kirchhoff para as tensões e correntes e, com manipulações algébricas, para colocar certos termos em evidência a fim de obter resultados com os parâmetros fornecidos pelo usuário do programa.
+Entre esses resultados, temos valores de tensão e corrente na forma de vetores, com seus respectivos ângulos de fase. Valores estes que foram alcançados por meio de uma matriz com números complexos.
+
+![17-calculo]()
 
 # Arquivos externos
 
