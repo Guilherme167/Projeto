@@ -49,15 +49,29 @@ Clicando com o botão esquerdo do mouse também é possível selecionar os gráf
 
 ![9-seleção](https://github.com/Guilherme167/Projeto/blob/master/imagens/9-sele%C3%A7%C3%A3o.png)
 
+# Tabela
+
+Selecionando a aba "resultados" é possível analisar, por meio de uma tabela, os valores de tensão e corrente de cada componente do circuito na forma de vetores. Nesta seção, pode-se organizar os vetores da tabala de duas formas: em ordem crescente do módulo dos vetores, ou, em ordem crescente do ângulo de fase dos mesmos. Além disso, também temos a opção de apagar os vetores da tabela, a fim de limpa-la;
+
+![16-tabela]()
+
 # Opções de menu
 
 Acessando a barra superior do programa é possivel acessar algumas opções a cerca do mesmo. Entre elas, temos a opção abrir, que abre um arquivo do formato ".csv" do computador do usuário, referente a uma simulção salva, para exibir informações de uma simulação especifica que se deseja.
 
 ![10-abrir](https://github.com/Guilherme167/Projeto/blob/master/imagens/10-abrir.png)
 
-A opção salvar cria uma arquivo ".csv" para salvar os valores de cada ccomponente do circuito:
+Basta escolher um arquivo ".csv", que não esteja vazio, para ser aberto:
+
+![15-abrirArq]()
+
+A opção salvar cria uma arquivo ".csv" para salvar os valores de cada vetor do circuito:
 
 ![11-salvar](https://github.com/Guilherme167/Projeto/blob/master/imagens/11-salvar.png)
+
+Que abre a seguinte caixa de texto para o usuário escolher o local e o nome do arquivo que deseja salvar:
+
+![14-salvarArq]()
 
 A opção sair, ao ser presionad, fecha a janela do programa, encerrando o mesmo:
 
