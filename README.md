@@ -53,7 +53,7 @@ Clicando com o botão esquerdo do mouse também é possível selecionar os gráf
 
 Selecionando a aba "resultados" é possível analisar, por meio de uma tabela, os valores de tensão e corrente de cada componente do circuito na forma de vetores. Nesta seção, pode-se organizar os vetores da tabala de duas formas: em ordem crescente do módulo dos vetores, ou, em ordem crescente do ângulo de fase dos mesmos. Além disso, também temos a opção de apagar os vetores da tabela, a fim de limpa-la;
 
-![16-tabela]()
+![16-tabela](https://github.com/Guilherme167/Projeto/blob/master/imagens/16-tabela.png)
 
 # Opções de menu
 
@@ -63,7 +63,7 @@ Acessando a barra superior do programa é possivel acessar algumas opções a ce
 
 Basta escolher um arquivo ".csv", que não esteja vazio, para ser aberto:
 
-![15-abrirArq]()
+![15-abrirArq](https://github.com/Guilherme167/Projeto/blob/master/imagens/15-abrirArq.png)
 
 A opção salvar cria uma arquivo ".csv" para salvar os valores de cada vetor do circuito:
 
@@ -71,13 +71,13 @@ A opção salvar cria uma arquivo ".csv" para salvar os valores de cada vetor do
 
 Que abre a seguinte caixa de texto para o usuário escolher o local e o nome do arquivo que deseja salvar:
 
-![14-salvarArq]()
+![14-salvarArq](https://github.com/Guilherme167/Projeto/blob/master/imagens/14-salvarArq.png)
 
 A opção sair, ao ser presionad, fecha a janela do programa, encerrando o mesmo:
 
 ![12-sair](https://github.com/Guilherme167/Projeto/blob/master/imagens/12-sair.png)
 
-A opção consultar manual, na aba Ajuda ao lado do Menu, abre o navegador e o direciona para o link deste manual, esta opção pode sr utilizda caso o usuário tenha alguma dúvida de como utilizar o programa:
+A opção consultar manual, na aba Ajuda ao lado do Menu, abre o navegador e o direciona para o link deste manual, esta opção pode ser utilizada caso o usuário tenha alguma dúvida de como utilizar o programa:
 
 ![13-ajuda](https://github.com/Guilherme167/Projeto/blob/master/imagens/13-ajuda.png)
 
