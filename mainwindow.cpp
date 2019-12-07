@@ -2,13 +2,14 @@
 #include "ui_mainwindow.h"
 
 Calculo temp;
+Valores var;
+Vetor a;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //MainWindow::makePlot();
 }
 
 MainWindow::~MainWindow()
@@ -21,7 +22,7 @@ void MainWindow::on_btnSimular_clicked()
     if((ui->impTensao->text())!= "" and (ui->impFreq->text())!= "" and (ui->impResA->text())!= "" and (ui->impIndA->text())!= "" and (ui->impResB->text())!= "" and (ui->impIndB->text())!= "" and (ui->impCap->text())!= "" and (ui->passoAtual->currentText())!= "" and (ui->tempoAtual->currentText())!= "")
     {
         if((ui->impTensao->text())> "0" and (ui->impFreq->text())> "0" and (ui->impResA->text())> "0" and (ui->impIndA->text())> "0" and (ui->impResB->text())> "0" and (ui->impIndB->text())> "0" and (ui->impCap->text())> "0")
-        {
+        {  
             temp.setTensaoFonte(ui->impTensao->text().toDouble());
             temp.setFrequencia(ui->impFreq->text().toDouble());
             temp.setResistenciaA(ui->impResA->text().toDouble());
@@ -33,7 +34,7 @@ void MainWindow::on_btnSimular_clicked()
             temp.setTempoDeSimulacao(ui->tempoAtual->currentText().toDouble());
 
             MainWindow::makePlot();
-            MainWindow::gerarTabela();
+            MainWindow::simular();
             QMessageBox::information(this,"Programa","A simulação ocorreu com sucesso!");
         }
         else
@@ -49,7 +50,7 @@ void MainWindow::on_btnSimular_clicked()
 
 void MainWindow::makePlot()
 {
-    double ri, li, rl, ll, cc, vi, h, t, tf, f, w, vica, pi = 3.14159265359; // Variaveis utilizadas no calculo
+    double ri, li, rl, ll, cc, vi, h, t, tf, f, w, vica, pi = 3.14159265359, r2 = 1.4142135624; // Variaveis utilizadas no calculo
 
     vi = temp.getTensaoFonte();
     f = temp.getFrequencia();
@@ -70,7 +71,7 @@ void MainWindow::makePlot()
     QVector<double> tempo(n), svi(n), svli(n), svll(n), svcc(n), sii(n), sil(n), sic(n);
     while (t < tf)
     {
-        vica = vi*qSin(w*t);
+        vica = vi*r2*qSin(w*t);
 
         dii = -(ri/li)*ii + (1/li)*(vica-vcc);
         ii = ii + dii*h;
@@ -163,12 +164,13 @@ void MainWindow::makePlot()
     ui->customPlotD->replot();
 }
 
-void MainWindow::gerarTabela()
+void MainWindow::simular()
 {
-    /*
-    double ri, li, rl, ll, cc, vi, f, w, vica, pi = 3.14159265359, r2 = 1.4142135624;
-    double vcc, vli, vll, ii, ic, il, div, xc, xli, xll;
-    vcc = vli = vll = ii = ic = il = div = vica = 0;
+    temp.setSimulacaoIniciada(1);
+    for(int i = 0; i < 7 ; i++)ui->tabela->removeRow(0);
+    a.apagarTudo();
+
+    double ri, li, rl, ll, cc, vi, f, w, vica, pi = 3.14159265359, r2 = 1.4142135624, gr = 180/pi;
 
     vi = temp.getTensaoFonte();
     f = temp.getFrequencia();
@@ -181,16 +183,7 @@ void MainWindow::gerarTabela()
     ll = temp.getIndutanciaB();
     cc = temp.getCapacitancia();
 
-
-    int i;
-    //complex<double> xc(0,0);
-    //, xli, xll;
-
-
-
-    xc = i*1/(w*cc);
-    xli = i*w*li;
-    xll = i*w*ll;
+    std::complex<double> vcc, vli, vll, ii, ic, il, div, xc(0,1/(w*cc)), xli(0,w*li), xll(0,w*ll);
 
     div = (-xc*ri +xc*xli -xc*rl +xc*xll +ri*rl +xll*ri +xli*rl -xli*xll);
     // Forma retangular
@@ -201,20 +194,62 @@ void MainWindow::gerarTabela()
     vcc = (xc)*ic;
     vli = (xli + ri)*ii;
     vll = (xll + rl)*il;
+    //------------------------------------
+    int nlinhas;
 
-    // Forma polar (M-modulo) (A-angulo)
-    PMii = abs(ii); PAii = angle(ii);
-    PMic = abs(ic); PAic = angle(ic);
-    PMil = abs(il); PAil = angle(il);
+    var.setVetorNome("Corrente ii"); var.setVetorModulo(abs(ii)); var.setVetorAngulo(arg(ii)*gr);
+    a.adicionarVetor(var);
+    nlinhas = ui->tabela->rowCount();
+    ui->tabela->insertRow(nlinhas);
+    exibirTabela(var, nlinhas);
 
-    PMvcc = abs(vcc); PAvcc = angle(vcc);
-    PMvli = abs(vli); PAvli = angle(vli);
-    PMvll = abs(vll); PAvll = angle(vll);
-    */
+    var.setVetorNome("Corrente il"); var.setVetorModulo(abs(il)); var.setVetorAngulo(arg(il)*gr);
+    a.adicionarVetor(var);
+    nlinhas = ui->tabela->rowCount();
+    ui->tabela->insertRow(nlinhas);
+    exibirTabela(var, nlinhas);
+
+    var.setVetorNome("Corrente ic"); var.setVetorModulo(abs(ic)); var.setVetorAngulo(arg(ic)*gr);
+    a.adicionarVetor(var);
+    nlinhas = ui->tabela->rowCount();
+    ui->tabela->insertRow(nlinhas);
+    exibirTabela(var, nlinhas);
+
+    var.setVetorNome("Tensao Indutor"); var.setVetorModulo(abs(vli)); var.setVetorAngulo(arg(vli)*gr);
+    a.adicionarVetor(var);
+    nlinhas = ui->tabela->rowCount();
+    ui->tabela->insertRow(nlinhas);
+    exibirTabela(var, nlinhas);
+
+    var.setVetorNome("Tensao Carga"); var.setVetorModulo(abs(vll)); var.setVetorAngulo(arg(vll)*gr);
+    a.adicionarVetor(var);
+    nlinhas = ui->tabela->rowCount();
+    ui->tabela->insertRow(nlinhas);
+    exibirTabela(var, nlinhas);
+
+    var.setVetorNome("Tensao Capacitor"); var.setVetorModulo(abs(vcc)); var.setVetorAngulo(arg(vcc)*gr);
+    a.adicionarVetor(var);
+    nlinhas = ui->tabela->rowCount();
+    ui->tabela->insertRow(nlinhas);
+    exibirTabela(var, nlinhas);
+
+    var.setVetorNome("Tensao Fonte"); var.setVetorModulo(vica); var.setVetorAngulo(0);
+    a.adicionarVetor(var);
+    nlinhas = ui->tabela->rowCount();
+    ui->tabela->insertRow(nlinhas);
+    exibirTabela(var, nlinhas);
+
+    ui->tabela->setColumnWidth(0,130);
+    ui->tabela->setColumnWidth(1,100);
+    ui->tabela->setColumnWidth(2,120);
 }
 
-
-//--------------------------------------------------------------------------
+void MainWindow::exibirTabela(Valores a, int linha)
+{
+    ui->tabela->setItem(linha,0, new QTableWidgetItem(a.getVetorNome()));
+    ui->tabela->setItem(linha,1, new QTableWidgetItem(QString::number(a.getVetorModulo())));
+    ui->tabela->setItem(linha,2, new QTableWidgetItem(QString::number(a.getVetorAngulo())));
+}
 
 void MainWindow::on_actionConsultar_manual_triggered()
 {
@@ -229,30 +264,57 @@ void MainWindow::on_actionSair_triggered()
 
 void MainWindow::on_actionSalvar_triggered()
 {
-    /*
-    QString filename;
-    filename = QFileDialog::getSaveFileName(this,"Salvar Arquivo","","*.csv");
-    if(a.salvarArquivo(filename) == 1)QMessageBox::information(this,"Salvo","Arquivo salvo com sucesso!");
-    else QMessageBox::critical(this,"Erro", "O arquivo não foi salvo.");
-    */
+    QString nomeArquivo;
+    nomeArquivo = QFileDialog::getSaveFileName(this,"Salvar Arquivo","","*.csv");
+    if(a.salvarArquivo(nomeArquivo) == 1)QMessageBox::information(this,"Salvo","Arquivo salvo com sucesso!");
+    else QMessageBox::critical(this,"Erro","O arquivo não foi salvo.");
 }
 
 void MainWindow::on_actionAbrir_triggered()
 {
-    /*
-    QString filename;
-    filename = QFileDialog::getOpenFileName(this, "Abrir Arquivo","","Arquivo separado por vírgulas(*.csv)");
-    if(a.carregarArquivo(filename) == 1){
-        QMessageBox::critical(this,"Arquivo"," O arquivo já foi lido, favor cheque a tabela!");
-    }else{
-        ui->tabela->clearContents();
-        on_actionLimpar_Tabela_triggered();
-        for(int i=0;i<a.size();i++){
-            ui->tabela->insertRow(i);
-            inserirNaTabela(a[i],i);
+    QString nomeArquivo;
+    nomeArquivo = QFileDialog::getOpenFileName(this,"Abrir Arquivo","","*.csv");
+
+    if(a.carregarArquivo(nomeArquivo) == 1){
+            QMessageBox::critical(this,"Erro"," O arquivo não foi berto");
+        }else{
+            for(int i = 0; i < 7 ; i++)ui->tabela->removeRow(0);
+            for(int i = 0; i < 7; i++){
+                ui->tabela->insertRow(i);
+                exibirTabela(a[i],i);
+            }
+            ui->tabela->setColumnWidth(0,130);
+            ui->tabela->setColumnWidth(1,100);
+            ui->tabela->setColumnWidth(2,120);
         }
-        atualizarEstatisticas();
-        QMessageBox::information(this,"Arquivo"," O arquivo foi lido, cheque a tabela!");
+}
+
+void MainWindow::on_btnOrdenarModulo_clicked()
+{
+    if(temp.getSimulacaoIniciada() == 1){
+        a.ordenarModulo();
+        ui->tabela->clearContents();
+            for(int i = 0; i < 7; i++){
+                exibirTabela(a[i],i);
+        }
     }
-    */
+}
+
+void MainWindow::on_btnOrdenarAngulo_clicked()
+{
+    if(temp.getSimulacaoIniciada() == 1){
+        a.ordenarAngulo();
+        ui->tabela->clearContents();
+            for(int i = 0; i < 7; i++){
+                exibirTabela(a[i],i);
+        }
+    }
+}
+
+void MainWindow::on_btnLimparTabela_clicked()
+{
+    temp.setSimulacaoIniciada(0);
+    for(int i = 0; i < 7 ; i++)ui->tabela->removeRow(0);
+    a.apagarTudo();
+    QMessageBox::information(this,"Tabela","A tabela foi limpa com sucesso.");
 }

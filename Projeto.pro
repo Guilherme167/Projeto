@@ -19,12 +19,16 @@ SOURCES += \
     calculo.cpp \
     main.cpp \
     mainwindow.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    valores.cpp \
+    vetor.cpp
 
 HEADERS += \
     calculo.h \
     mainwindow.h \
-    qcustomplot.h
+    qcustomplot.h \
+    valores.h \
+    vetor.h
 
 FORMS += \
     mainwindow.ui

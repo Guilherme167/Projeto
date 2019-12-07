@@ -2,17 +2,7 @@
 #define CALCULO_H
 
 #include <QString>
-#include <qmath.h>
-
-
-#include <iostream>
 #include <complex>
-//#include <complex.h>
-
-
-
-
-//#include <QDebug>
 
 class Calculo
 {
@@ -36,15 +26,16 @@ public:
 
     double getCapacitancia() const;
     void setCapacitancia(double value);
-
     double getPassoDeCalculo() const;
     void setPassoDeCalculo(double value);
+
     double getTempoDeSimulacao() const;
     void setTempoDeSimulacao(double value);
+    bool getSimulacaoIniciada() const;
+    void setSimulacaoIniciada(bool value);
 
 private:
-    //Qvector<double> ;
-
+    bool simulacaoIniciada;
     double tensaoFonte;
     double frequencia;
 
@@ -56,6 +47,7 @@ private:
     double capacitancia;
     double passoDeCalculo;
     double tempoDeSimulacao;
+
 };
 
 #endif // CALCULO_H
