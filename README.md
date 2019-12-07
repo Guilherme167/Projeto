@@ -5,7 +5,7 @@ Projeto desenvolvido atraves do programa Qt Creator pelo aluno Guilherme Costa, 
 # Objetivo da aplicação
 
 Muitas vezes, para fim de pesquisas cientificas ou práticos no mercado de trabalho, se torna necessário investir em programas que atendam as necessidades dos profisionais de cada área. Nesse viés, este progrograma busca proporcionar, de forma rápida e prática, resultados para análise de um técnico de um circuito RLC.
-Os circuitos RLC são compostos por elementos resistivos, indutivos e capacitivos. Caracterizando a maior prte das cargas elétricas que podemos encontrar no dia a dia. Dessa forma, é extremamente viávem optar por programas deste gênero para facilitar o trabalho e aumentar a produtividade.
+Os circuitos RLC são compostos por elementos resistivos, indutivos e capacitivos. Caracterizando a maior parte das cargas elétricas que podemos encontrar no dia a dia. Dessa forma, é extremamente viável optar por programas deste gênero para facilitar o trabalho e aumentar a produtividade.
 
 # Utilizando o simulador:
 
@@ -13,7 +13,7 @@ O programa possui uma interface simples que facilita a sua utilização, aqui te
 
 ![1-interface](https://github.com/Guilherme167/Projeto/blob/master/imagens/1-interface.png)
 
-Nas caixas de texto é possível inserir os valores de cada componente do circuito que se deseja simular, devem ser inseridos apenas números positivos seprados por ponto (no lugar de vírgulas) se necessário:
+Nas caixas de texto é possível inserir os valores de cada componente do circuito que se deseja simular, devem ser inseridos apenas números positivos separados por ponto (no lugar de vírgulas) se necessário:
 
 ![2-valores](https://github.com/Guilherme167/Projeto/blob/master/imagens/2-valores.png)
 
@@ -37,11 +37,11 @@ O mesmo ocorrerá caso o usuário insira valores que não sejam válidos, como c
 
 # Gráficos
 
-Quando a simulção for concluida, após alguns instantes, será possível acessá-los atraves da segunda aba superior onde está escrito "Simulção", sendo possível observar os gráficos pra cada componente do circuito no tempo pela amplitude dos valores. Os gráficos em azul representam a tensão e, os em vermelho, a corrente elétrica.
+Quando a simulação for concluida, após alguns instantes, será possível acessá-los atraves da segunda aba superior onde está escrito "Simulação", sendo possível observar os gráficos pra cada componente do circuito no tempo pela amplitude dos valores. Os gráficos em azul representam a tensão e, os em vermelho, a corrente elétrica.
 
 ![7-plot](https://github.com/Guilherme167/Projeto/blob/master/imagens/7-plot.png)
 
-Os gráficos são interativos, sendo possível interagir com os mesmos. Ao clicar (com o botão esquerdo do mouse) e arrastar é possível deslocar o gráfico e, utilizando o scroll do mouse (botão do meio do mouse) é possível aproximar ou distanciar o gráfico, ajuntando de acordo com o gosto do usuário.
+Os gráficos são interativos, sendo possível interagir com os mesmos. Ao clicar (com o botão esquerdo do mouse) e arrastar é possível deslocar o gráfico e, utilizando o scroll do mouse (botão do meio do mouse) é possível aproximar ou distanciar o gráfico, de acordo com o gosto do usuário.
 
 ![8-zoom](https://github.com/Guilherme167/Projeto/blob/master/imagens/8-zoom.png)
 
@@ -51,7 +51,7 @@ Clicando com o botão esquerdo do mouse também é possível selecionar os gráf
 
 # Tabela
 
-Selecionando a aba "resultados" é possível analisar, por meio de uma tabela, os valores de tensão e corrente de cada componente do circuito na forma de vetores. Nesta seção, pode-se organizar os vetores da tabala de duas formas: em ordem crescente do módulo dos vetores, ou, em ordem crescente do ângulo de fase dos mesmos. Além disso, também temos a opção de apagar os vetores da tabela, a fim de limpa-la;
+Selecionando a aba "resultados" é possível analisar, por meio de uma tabela, os valores de tensão e corrente de cada componente do circuito na forma de vetores. Nesta seção, pode-se organizar os vetores da tabela de duas formas: em ordem crescente do módulo dos vetores, ou, em ordem crescente do ângulo de fase dos mesmos. Além disso, também temos a opção de apagar os vetores da tabela, a fim de limpa-la;
 
 ![16-tabela](https://github.com/Guilherme167/Projeto/blob/master/imagens/16-tabela.png)
 
